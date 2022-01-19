@@ -8,3 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Versión inicial de código. Carga inicial del repositorio del alumno (lmachado25).
 
+## [1.0.1] - 2021-01-19
+### Added
+- Despliegue manual de la aplicación SAM en local
+- Pruebas unitarias y de integración en local
+- Adecuación de bucket en configuración samconfig.toml
+- Desplegar la aplicación con la configuración de samconfig.toml
+- Ejecución Pruebas de la API SAM en AWS
+
