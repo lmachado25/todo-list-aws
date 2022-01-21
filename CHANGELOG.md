@@ -20,3 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Cambios para aumentar el % de cobertura en las pruebas unitarias
 
+## [1.0.3] - 2021-01-21
+### Added
+- Se modifica el archivo CHANGELOG.md, agregando un comentario, para generar un cambio en rama develop y verificar este cambio en la rama master al ejecutar el pipeline completo PIPELINE-FULL-CD
