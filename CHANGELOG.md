@@ -16,3 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Desplegar la aplicación con la configuración de samconfig.toml
 - Ejecución Pruebas de la API SAM en AWS
 
+## [1.0.2] - 2021-01-20
+### Added
+- Cambios para aumentar el % de cobertura en las pruebas unitarias
+
