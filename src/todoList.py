@@ -169,19 +169,19 @@ def get_translate(key, language=None, dynamodb=None):
         text = result['Item']['text']
 
         dominant_language = json.loads(json.dumps(
-                            comprehend.detect_dominant_language(Text=text),
-                            sort_keys=True))
+                                            comprehend.detect_dominant_language(Text=text),
+                                            sort_keys=True))
         dominant_language = sorted(dominant_language['Languages'],
-                            key=lambda language : language['Score'],
-                            reverse=True)
+                                    key=lambda language : language['Score'],
+                                    reverse=True)
 
         sourceLanguage = dominant_language[0]['LanguageCode']
         print('dominant_language: ' + str(dominant_language))
         print('sourceLanguage: ' + sourceLanguage)
 
         text_translate = translate.translate_text(Text=text,
-                                    SourceLanguageCode=sourceLanguage,
-                                    TargetLanguageCode=language)
+                                                    SourceLanguageCode=sourceLanguage,
+                                                    TargetLanguageCode=language)
         result['Item']['text'] = text_translate
 
         return result['Item']
