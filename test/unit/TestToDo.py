@@ -143,7 +143,7 @@ class TestDatabaseFunctions(unittest.TestCase):
 
     def test_update_todo_error(self):
         print ('---------------------')
-        print ('Start: atest_update_todo_error')
+        print ('Start: test_update_todo_error')
         from src.todoList import put_item
         from src.todoList import update_item
         updated_text = "Aprender más cosas que DevOps y Cloud en la UNIR"
@@ -172,7 +172,7 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.uuid,
                 None,
                 self.dynamodb))
-        print ('End: atest_update_todo_error')
+        print ('End: test_update_todo_error')
 
     def test_delete_todo(self):
         print ('---------------------')
@@ -199,17 +199,16 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
 
-    def test_zget_table_todo(self):
+    def test_get_table_todo(self):
         print ('---------------------')
-        print ('Start: test_zget_table_todo')
-        os.environ["ENDPOINT_OVERRIDE"] = "http://localhost:8000"
+        print ('Start: test_get_table_todo')
+        os.environ["ENDPOINT_OVERRIDE"] = ""
+        os.environ['AWS_DEFAULT_REGION'] = "us-east-1"
         from src.todoList import get_table
         table = get_table(None)
         print('Table name:' + str(table))
         self.assertIsNotNone(table)
-        os.environ["ENDPOINT_OVERRIDE"] = ""
-        print ('End: test_zget_table_todo')
-
+        print ('End: test_get_table_todo')
 
 
 if __name__ == '__main__':

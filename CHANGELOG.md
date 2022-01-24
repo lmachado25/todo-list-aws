@@ -23,3 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.3] - 2021-01-21
 ### Added
 - Se modifica el archivo CHANGELOG.md, agregando un comentario, para generar un cambio en rama develop y verificar este cambio en la rama master al ejecutar el pipeline completo PIPELINE-FULL-CD
+
+## [1.0.4] - 2021-01-23
+### Added
+- Adecuación en la prueba unitaria test_get_table_todo para aumentar la cobertura
+- Cambio en valor de unhealthyThreshold a 80.0 en Jenkinsfile del pipeline de staging
