@@ -147,12 +147,12 @@ def create_todo_table(dynamodb):
 
     return table
     
-
 def get_translate(key, language=None, dynamodb=None):
     table = get_table(dynamodb)
-    
-    comprehend = boto3.client(service_name='comprehend', region_name='us-east-1')
-    translate = boto3.client(service_name='translate', region_name='us-east-1')
+    comprehend = boto3.client(
+            service_name='comprehend', region_name='us-east-1')
+    translate = boto3.client(
+            service_name='translate', region_name='us-east-1')
 
     try:
         result = table.get_item(
