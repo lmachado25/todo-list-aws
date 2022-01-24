@@ -210,6 +210,30 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertIsNotNone(table)
         print ('End: test_get_table_todo')
 
+    def test_get_translate_todo(self):
+        print ('---------------------')
+        print ('Start: test_get_translate_todo')
+        from src.todoList import get_translate
+        from src.todoList import put_item
+
+        self.text = "Learn DevOps and Cloud at UNIR"
+        # Testing file functions
+        # Table mock
+        responsePut = put_item(self.text, self.dynamodb)
+        print ('Response put_item:' + str(responsePut))
+        idItem = json.loads(responsePut['body'])['id']
+        print ('Id item:' + idItem)
+        self.assertEqual(200, responsePut['statusCode'])
+        responseGet = get_translate(
+                idItem,
+                "en",
+                self.dynamodb)
+        print ('Response Get:' + str(responseGet))
+        self.assertEqual(
+            idItem,
+            responseGet['id'])
+        print ('End: test_get_translate_todo')
+    
 
 if __name__ == '__main__':
     unittest.main()

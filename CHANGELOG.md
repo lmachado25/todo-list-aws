@@ -28,3 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Adecuación en la prueba unitaria test_get_table_todo para aumentar la cobertura
 - Cambio en valor de unhealthyThreshold a 80.0 en Jenkinsfile del pipeline de staging
+
+## [2.0.0] - 2021-01-24
+### Added
+- Se agrega funcionalidad Translate
