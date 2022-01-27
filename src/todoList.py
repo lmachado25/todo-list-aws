@@ -155,7 +155,6 @@ def get_translate(key, language=None, dynamodb=None):
     session_token = os.environ['SESSION_TOKEN']
 
     if key_id:
-        print('PASA POR EL IF')
         comprehend = boto3.client(
                 service_name='comprehend', region_name='us-east-1',
                 aws_access_key_id=key_id,
@@ -167,7 +166,6 @@ def get_translate(key, language=None, dynamodb=None):
                 aws_secret_access_key=access_key,
                 aws_session_token=session_token)
     else:
-        print('PASA POR EL ELSE')
         comprehend = boto3.client(
                 service_name='comprehend', region_name='us-east-1')
         translate = boto3.client(
