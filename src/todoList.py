@@ -152,9 +152,11 @@ def get_translate(key, language=None, dynamodb=None):
     try:
         table = get_table(dynamodb)
         comprehend = boto3.client(
-                service_name='comprehend', region_name=os.environ['AWS_DEFAULT_REGION'])
+                service_name='comprehend', 
+                region_name=os.environ['AWS_DEFAULT_REGION'])
         translate = boto3.client(
-                service_name='translate', region_name=os.environ['AWS_DEFAULT_REGION'])
+                service_name='translate', 
+                region_name=os.environ['AWS_DEFAULT_REGION'])
 
         result = table.get_item(
             Key={
