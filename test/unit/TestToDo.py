@@ -103,6 +103,15 @@ class TestDatabaseFunctions(unittest.TestCase):
             self.text,
             responseGet['text'])
         print ('End: test_get_todo')
+
+    def test_get_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_get_todo_error')
+        from src.todoList import get_item
+        
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
+        self.assertRaises(Exception, get_item(None, dynamodb))
+        print ('End: test_get_todo_error')
     
     def test_list_todo(self):
         print ('---------------------')
@@ -196,7 +205,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_delete_todo_error')
         from src.todoList import delete_item
         # Testing file functions
-        self.assertRaises(TypeError, delete_item("", self.dynamodb))
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
+        self.assertRaises(Exception, delete_item("", dynamodb))
         print ('End: test_delete_todo_error')
 
     def test_get_table_todo(self):
