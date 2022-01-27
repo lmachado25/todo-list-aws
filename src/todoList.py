@@ -187,6 +187,6 @@ def get_translate(key, language=None, dynamodb=None):
                             SourceLanguageCode=sourceLanguage,
                             TargetLanguageCode=language)
 
-        result['Item']['text'] = text_translate
+        result['Item']['text'] = text_translate['TranslatedText']
 
         return result['Item']
