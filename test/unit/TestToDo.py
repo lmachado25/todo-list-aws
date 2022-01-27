@@ -216,7 +216,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         from src.todoList import get_translate
         from src.todoList import put_item
 
-        self.text = "Learn DevOps and Cloud at UNIR"
+        self.text = "Aprender DevOps y Cloud en la UNIR"
         # Testing file functions
         # Table mock
         responsePut = put_item(self.text, self.dynamodb)
@@ -224,10 +224,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         idItem = json.loads(responsePut['body'])['id']
         print ('Id item:' + idItem)
         self.assertEqual(200, responsePut['statusCode'])
-        responseGet = get_translate(
-                idItem,
-                "en",
-                self.dynamodb)
+        responseGet = get_translate(idItem, "en", self.dynamodb)
         print ('Response Get:' + str(responseGet))
         self.assertEqual(
             idItem,
