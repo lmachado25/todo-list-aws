@@ -226,10 +226,26 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertEqual(200, responsePut['statusCode'])
         responseGet = get_translate(idItem, "en", self.dynamodb)
         print ('Response Get:' + str(responseGet))
-        self.assertEqual(
-            idItem,
-            responseGet['id'])
+        self.assertIsNotNone(responseGet, "Test value is none.")
         print ('End: test_get_translate_todo')
+
+    def test_get_translate_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_get_translate_todo_error')
+        from src.todoList import get_translate
+        from src.todoList import put_item
+
+        self.text = "Aprender DevOps y Cloud en la UNIR"
+        # Testing file functions
+        # Table mock
+        responsePut = put_item(self.text, self.dynamodb)
+        print ('Response put_item:' + str(responsePut))
+        idItem = json.loads(responsePut['body'])['id']
+        print ('Id item:' + idItem)
+        self.assertEqual(200, responsePut['statusCode'])
+        os.environ['AWS_DEFAULT_REGION'] = "us-west-1"
+        self.assertRaises(Exception, get_translate(idItem, "en", self.dynamodb))
+        print ('End: test_get_translate_todo_error')
 
 
 if __name__ == '__main__':

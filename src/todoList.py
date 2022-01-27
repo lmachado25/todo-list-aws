@@ -149,21 +149,19 @@ def create_todo_table(dynamodb):
 
 
 def get_translate(key, language=None, dynamodb=None):
-    table = get_table(dynamodb)
-    comprehend = boto3.client(
-            service_name='comprehend', region_name='us-east-1')
-    translate = boto3.client(
-            service_name='translate', region_name='us-east-1')
     try:
+        table = get_table(dynamodb)
+        comprehend = boto3.client(
+                service_name='comprehend', region_name=os.environ['AWS_DEFAULT_REGION'])
+        translate = boto3.client(
+                service_name='translate', region_name=os.environ['AWS_DEFAULT_REGION'])
+
         result = table.get_item(
             Key={
                 'id': key
             }
         )
 
-    except ClientError as e:
-        print(e.response['Error']['Message'])
-    else:
         print('Result getItem:'+str(result))
         text = result['Item']['text']
 
@@ -188,4 +186,7 @@ def get_translate(key, language=None, dynamodb=None):
 
         result['Item']['text'] = text_translate['TranslatedText']
 
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
         return result['Item']
