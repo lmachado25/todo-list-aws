@@ -6,6 +6,7 @@ import json
 import functools
 from botocore.exceptions import ClientError
 
+
 def get_table(dynamodb=None):
     if not dynamodb:
         URL = os.environ['ENDPOINT_OVERRIDE']
@@ -150,8 +151,8 @@ def create_todo_table(dynamodb):
 def get_translate(key, language=None, dynamodb=None):
     table = get_table(dynamodb)
     key_id = os.environ['KEY_ID']
-    access_key=os.environ['ACCESS_KEY']
-    session_token=os.environ['SESSION_TOKEN']
+    access_key = os.environ['ACCESS_KEY']
+    session_token = os.environ['SESSION_TOKEN']
 
     if key_id:
         comprehend = boto3.client(
