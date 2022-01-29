@@ -32,3 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-01-24
 ### Added
 - Se agrega funcionalidad Translate
+
+## [2.0.1] - 2021-01-29
+### Added
+- Adecuación de bucket S3 en entorno production
