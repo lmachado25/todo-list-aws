@@ -234,6 +234,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         idItem = json.loads(responsePut['body'])['id']
         print ('Id item:' + idItem)
         self.assertEqual(200, responsePut['statusCode'])
+        os.environ['AWS_DEFAULT_REGION'] = "us-east-1"
         responseGet = get_translate(idItem, "en", self.dynamodb)
         print ('Response Get:' + str(responseGet))
         self.assertIsNotNone(responseGet, "Test value is none.")
@@ -253,7 +254,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         idItem = json.loads(responsePut['body'])['id']
         print ('Id item:' + idItem)
         self.assertEqual(200, responsePut['statusCode'])
-        os.environ['AWS_DEFAULT_REGION'] = "us-west-1"
+        os.environ['AWS_DEFAULT_REGION'] = "us-east-2"
         self.assertRaises(Exception, get_translate(idItem, "en", self.dynamodb))
         print ('End: test_get_translate_todo_error')
 

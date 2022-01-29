@@ -154,6 +154,7 @@ def get_translate(key, language=None, dynamodb=None):
         comprehend = boto3.client(
                 service_name='comprehend',
                 region_name=os.environ['AWS_DEFAULT_REGION'])
+
         translate = boto3.client(
                 service_name='translate',
                 region_name=os.environ['AWS_DEFAULT_REGION'])
